@@ -1,7 +1,6 @@
 import React, { useRef } from "react"
 import "../styles/drawingPanel.scss"
 import Row from "./Row"
-import { exportComponentAsPNG } from "react-component-export-image"
 
 export default function DrawingPanel(props) {
   const { width, height, selectedColor } = props
@@ -14,13 +13,28 @@ export default function DrawingPanel(props) {
     rows.push(<Row key={i} width={width} selectedColor={selectedColor} />)
   }
 
+  function sendImage() {
+    let data = []
+    for (const row of panelRef.current.childNodes.values()) {
+      let newRow = []
+      for (const pixel of row.childNodes) {
+        let val = (pixel.attributes.style.nodeValue === "background-color: rgb(255, 255, 255);") ? 0 : 1;
+        newRow.push(val)
+      }
+      data.push(newRow)
+    }
+
+    // Send data via server to RPI
+    console.log(data)
+  }
+  
   return (
     <div id="drawingPanel">
       <div id="pixels" ref={panelRef}>
         {rows}
       </div>
-      <button onClick={() => exportComponentAsPNG(panelRef)} className="button">
-        Export as PNG
+      <button onClick={() => sendImage()} className="button">
+        Send Image
       </button>
     </div>
   )
