@@ -4,8 +4,8 @@ import { CompactPicker } from "react-color"
 import DrawingPanel from "./DrawingPanel"
 
 export default function Editor() {
-  const [panelWidth, setPanelWidth] = useState(16)
-  const [panelHeight, setPanelHeight] = useState(16)
+  const [panelWidth, setPanelWidth] = useState(10)
+  const [panelHeight, setPanelHeight] = useState(15)
   const [hideOptions, setHideOptions] = useState(false)
   const [hideDrawingPanel, setHideDrawingPanel] = useState(true)
   const [buttonText, setButtonText] = useState("start drawing")
@@ -26,30 +26,40 @@ export default function Editor() {
 
   return (
     <div id="editor">
-      <h1>Pixel Editor</h1>
-      {hideDrawingPanel && <h2>Enter Panel Dimensions</h2>}
+      <h1>Waterbender</h1>
+      {hideDrawingPanel && <h2>Dimensions of Drawing</h2>}
       {hideDrawingPanel && (
         <div id="options">
           <div className="option">
-            <input
+            {/* <input
               type="number"
               className="panelInput"
               defaultValue={panelWidth}
               onChange={(e) => {
                 setPanelWidth(e.target.value)
               }}
-            />
+            /> */}
+            <div 
+            type = "number"
+            className="panelInput">
+              {panelWidth}
+            </div>
             <span>Width</span>
           </div>
           <div className="option">
-            <input
+            {/* <input
               type="number"
               className="panelInput"
               defaultValue={panelHeight}
               onChange={(e) => {
                 setPanelHeight(e.target.value)
               }}
-            />
+            /> */}
+            <div 
+            type = "number"
+            className="panelInput">
+              {panelHeight}
+            </div>
             <span>Height</span>
           </div>
         </div>
