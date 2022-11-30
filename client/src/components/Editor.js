@@ -4,8 +4,8 @@ import { CompactPicker } from "react-color"
 import DrawingPanel from "./DrawingPanel"
 
 export default function Editor() {
-  const [panelWidth, setPanelWidth] = useState(10)
-  const [panelHeight, setPanelHeight] = useState(15)
+  const [panelWidth] = useState(10)
+  const [panelHeight] = useState(15)
   const [hideOptions, setHideOptions] = useState(false)
   const [hideDrawingPanel, setHideDrawingPanel] = useState(true)
   const [buttonText, setButtonText] = useState("start drawing")
