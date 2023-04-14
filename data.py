@@ -13,6 +13,9 @@ db = conn.Waterbender
 collection = db.Drawings
   
 # To find() all the entries inside collection name 'myTable'
-cursor = collection.find()
+cursor = collection.find().limit(1)
 for record in cursor:
-    print(record)
+    print("Mongo ID: ", record["_id"])
+    image = record["image"]
+    for row in range(len(image)):
+        print(record["image"][row])
